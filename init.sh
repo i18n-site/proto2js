@@ -10,7 +10,8 @@ fi
 
 
 if [ ! -d "protoc-gen-mbt" ]; then
-git clone --depth=1 git@github.com:moonbitlang/protoc-gen-mbt.git
+# git clone --depth=1
+git clone git@github.com:moonbitlang/protoc-gen-mbt.git
 fi
 
 moonup install nightly
