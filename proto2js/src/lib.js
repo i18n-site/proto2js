@@ -6,8 +6,13 @@ const BaseType = "BaseType",
 	findType = (pkg, root_nested) => (type_name) => {
 		if (!type_name.startsWith(pkg)) return
 		type_name = type_name.slice(pkg.length).split(".")
-
-		console.log(root_nested[type_name[0]], type_name)
+		let type = root_nested[type_name.shift()]
+		while (type) {
+			type = type.nested[type_name.shift()]
+			if (!type_name.length) {
+				return type
+			}
+		}
 	},
 	gen = (find, pkg_prefix, root_nested, prefix) => {
 		const pathCode = []
