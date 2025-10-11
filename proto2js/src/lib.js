@@ -60,7 +60,7 @@ const BaseType = "BaseType",
 										if (repeated) value += "Li"
 										import_type.add(value)
 										return value
-									} else {
+									} else if (findedSyntaxType == "MessageDefinition") {
 										console.log({ type, findedSyntaxType })
 										return
 									}
