@@ -1,0 +1,28 @@
+{
+  "lockfileVersion": 1,
+  "workspaces": {
+    "": {
+      "name": "@3-/proto2js",
+      "dependencies": {
+        "@3-/walk": "^0.2.1",
+        "proto-parser": "^0.0.9",
+      },
+      "devDependencies": {
+        "@3-/read": "^0.1.4",
+        "@3-/write": "^0.0.2",
+        "@i18n.site/proto": "^0.1.8",
+      },
+    },
+  },
+  "packages": {
+    "@3-/read": ["@3-/read@0.1.4", "", {}, "sha512-PZDRfIFuaFNAW6VjWupa7+g/3GbhES6shAgETN/RXtTdJxcIwl9HSBMy2sdfRqAc/FUeUJFL3F8PfpsdZbC8xg=="],
+
+    "@3-/walk": ["@3-/walk@0.2.1", "", {}, "sha512-JW9ny4EzDq2Vik304x9vfnHgAFpgFHjMVxHCvI0k1PYDC8d7TPUdZw2kz1OkkCIOFm2u1WpAw52JnPSaEJr1Qw=="],
+
+    "@3-/write": ["@3-/write@0.0.2", "", {}, "sha512-eFLP3Vsh66Xhw4hYsiYUOBaH/Gciu1DNfWeJTN9MO/yNZB6cg1LvtnxNF9nwOoAzT4oaCLmT0jjFe5J96//Zew=="],
+
+    "@i18n.site/proto": ["@i18n.site/proto@0.1.8", "", {}, "sha512-zAhGM+MuQFBv4uxkMONPYA2LuDahVJhUTZ7RWLUsvTtPjX91im4AYCVkIeuEPJMIM0DEaUp7gcWmRhp33om1dQ=="],
+
+    "proto-parser": ["proto-parser@0.0.9", "", {}, "sha512-1rFsUdeZ1bKOGfhy1Pw2RWNiAPj7luwBIFeVSJQXZA2G3sh4a24sHtNgnYfisdi4YvAe7TsDNq1xREos+Iwfww=="],
+  }
+}

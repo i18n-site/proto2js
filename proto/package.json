@@ -1,0 +1,26 @@
+{
+  "name": "@i18n.site/proto",
+  "version": "0.1.11",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i18n-site/proto2js.git"
+  },
+  "homepage": "https://github.com/i18n-site/proto2js",
+  "author": "i18n.site@gmail.com",
+  "license": "MulanPSL-2.0",
+  "exports": {
+    "./*": "./src/*"
+  },
+  "sideEffects": false,
+  "devDependencies": {
+    "@3-/read": "^0.1.4",
+    "@3-/walk": "^0.2.1",
+    "@3-/write": "^0.0.2",
+    "@bokuweb/zstd-wasm": "^0.0.27",
+    "cli-table3": "^0.6.5",
+    "oxc-minify": "^0.94.0",
+    "protobufjs": "^7.5.4",
+    "rolldown": "^1.0.0-beta.42"
+  },
+  "type": "module"
+}
