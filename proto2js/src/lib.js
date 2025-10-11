@@ -50,6 +50,7 @@ const BaseType = "BaseType",
 				default:
 					const { fields, nested } = val
 					let proto_import = new Set(),
+						js_import = new Set(),
 						args = [],
 						comment,
 						getType = (type, repeated) => {
@@ -73,8 +74,8 @@ const BaseType = "BaseType",
 										proto_import.add(value)
 										return value
 									} else if (findedSyntaxType == "MessageDefinition") {
-										console.log({ type, finded })
 										const name = finded[0].join("$")
+										js_import.add(name)
 										return repeated ? "[" + name + "]" : name
 									}
 								}
