@@ -9,6 +9,7 @@ package demo;
 // }
 //
 // message Test1 {
+//   repeated Kind name_li = 1;
 //   Kind name = 4;
 // }
 
