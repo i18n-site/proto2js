@@ -50,13 +50,12 @@ const BaseType = "BaseType",
 						}
 					Object.values(fields).forEach((o) => {
 						const { id, name, map, repeated } = o
-						comment = id
+						comment = id " " + name
 
 						if (repeated) {
 							comment += " repeated"
 						}
 
-						comment += " " + name
 
 						const type = getType(o.type, repeated)
 
