@@ -77,7 +77,8 @@ const BaseType = "BaseType",
 									const findedSyntaxType = finded[1].syntaxType
 									if (findedSyntaxType == "EnumDefinition") {
 										comment +=
-											" : enum " + (repeated ? "[" + value + "]" : value)
+											" : " +
+											(repeated ? "[ enum " + value + "]" : "enum " + value)
 										value = "int32"
 										if (repeated) value += "Li"
 										proto_import.add(value)
