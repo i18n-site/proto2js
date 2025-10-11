@@ -30,20 +30,22 @@ const BaseType = "BaseType",
 						args = [],
 						getType = (type, repeated) => {
 							let { value, syntaxType } = type
-							value = repeated ? value + "Li" : value
 							if (syntaxType == BaseType) {
+								value = repeated ? value + "Li" : value
 								import_type.add(value)
 								return value
 							} else if (
 								syntaxType == "Identifier" &&
 								type.resolvedValue.startsWith(pkg_prefix)
 							) {
-								const vSyntaxType = root_nested[value].syntaxType
-
-								if (vSyntaxType == "EnumDefinition") {
-									value = "int32"
-									return value
-								}
+								const vSyntaxType = root_nested[value]
+								console.log({ vSyntaxType, value })
+								// console.log(vSyntaxType)
+								//
+								// if (vSyntaxType == "EnumDefinition") {
+								// 	value = "int32"
+								// 	return value
+								// }
 							}
 							console.log("TODO type", type, { pkg_prefix })
 						}
