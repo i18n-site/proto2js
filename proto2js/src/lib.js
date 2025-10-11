@@ -55,19 +55,21 @@ const BaseType = "BaseType",
 						comment,
 						getType = (type, repeated) => {
 							const typeStr = (type) => {
-								if (["string", "bytes"].includes(type)) {
+								if (repeated) {
+									if (["string", "bytes"].includes(type)) {
+										proto_import.add(type)
+										return "[" + type + "]"
+									}
+									type = type + "Li"
 									proto_import.add(type)
-									return "[" + type + "]"
+									return type
 								}
-								type = type + "Li"
 								proto_import.add(type)
 								return type
 							}
 							let { value, syntaxType } = type
 							if (syntaxType == BaseType) {
-								value = repeated ? typeStr(value) : value
-								proto_import.add(value)
-								return value
+								return typeStr(value)
 							} else if (syntaxType == "Identifier") {
 								const finded = find(type.resolvedValue)
 								// console.log({ finded })
