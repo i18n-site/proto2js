@@ -5,11 +5,11 @@ import write from "@3-/write"
 import { join } from "node:path"
 import gen from "../src/lib.js"
 import { walkRel } from "@3-/walk"
-import { existsSync, unlinkSync } from "node:fs"
+import { existsSync, rmSync } from "node:fs"
 
 const dirGen = async (proto_dir, out_dir) => {
 	if (existsSync(out_dir)) {
-		unlinkSync(out_dir, { recursive: true })
+		rmSync(out_dir, { recursive: true, force: true })
 	}
 	for (const fp of walkRel(proto_dir, (i) => {
 		i.startsWith(".") || ["node_modules"].includes(i)
