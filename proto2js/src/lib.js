@@ -3,8 +3,6 @@
 import { parse } from "proto-parser"
 
 const BaseType = "BaseType",
-	liType = (type) =>
-		["string", "bytes"].includes(type) ? "[" + type + "]" : type + "Li",
 	findType = (pkg, root_nested) => (type_name) => {
 		if (!type_name.startsWith(pkg)) {
 			return
@@ -55,6 +53,12 @@ const BaseType = "BaseType",
 						js_import = new Set(),
 						args = [],
 						comment,
+						liType = (type) => {
+							if (["string", "bytes"].includes(type)) {
+								return "[" + type + "]"
+							}
+							return type + "Li"
+						},
 						getType = (type, repeated) => {
 							let { value, syntaxType } = type
 							if (syntaxType == BaseType) {
