@@ -13,9 +13,13 @@ package demo;
 //   Kind name = 4;
 // }
 
+message Test0 {
+  int64 abc = 1;
+}
+
 message SearchResponse {
   message Result {
-    string url = 1;
+    Test0 url = 1;
     // string title = 2;
     // repeated string snippets = 3;
   }
