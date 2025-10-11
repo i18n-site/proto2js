@@ -99,7 +99,7 @@ const BaseType = "BaseType",
 
 					;[..."ED"].forEach((kind) => {
 						push([
-							name + kind,
+							prefix_name + kind,
 							`import { $${import_type} } from "@i18n.site/proto/${kind}.js"
 
 export default $([${args}])`,
