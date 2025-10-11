@@ -4,7 +4,10 @@ import { parse } from "proto-parser"
 
 const BaseType = "BaseType",
 	findType = (pkg, root_nested) => (type_name) => {
-		console.log({ pkg, type_name })
+		if (!type_name.startsWith(pkg)) return
+		type_name = type_name.slice(pkg.length).split(".")
+
+		console.log(root_nested[type_name[0]], type_name)
 	},
 	gen = (find, pkg_prefix, root_nested, prefix) => {
 		const pathCode = []
@@ -39,8 +42,7 @@ const BaseType = "BaseType",
 								import_type.add(value)
 								return value
 							} else if (syntaxType == "Identifier") {
-								console.log(type)
-								// const finded = find(resolvedValue)
+								const finded = find(type.resolvedValue)
 								// const vSyntaxType = root_nested[value].syntaxType
 								// if (vSyntaxType == "EnumDefinition") {
 								// 	if (!comment.includes(":")) {
