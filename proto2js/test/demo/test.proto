@@ -1,14 +1,6 @@
 syntax = "proto3";
 
-package demo;
-
-message Test0 {
-  int64 abc = 1;
-  oneof notice_way {
-    string email = 2;
-    string phone = 3;
-  }
-}
+import "./test0.proto";
 
 enum Kind {
   UNDEFINED = 0;
@@ -18,7 +10,7 @@ enum Kind {
 
 message Test1 {
   repeated Kind name_li = 1;
-  Kind name = 4;
+  Test0 name = 4;
 }
 
 message SearchResponse {
