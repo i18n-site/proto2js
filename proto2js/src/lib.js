@@ -49,14 +49,14 @@ const BaseType = "BaseType",
 				}
 				default:
 					const { fields, nested } = val
-					let import_type = new Set(),
+					let proto_import = new Set(),
 						args = [],
 						comment,
 						getType = (type, repeated) => {
 							let { value, syntaxType } = type
 							if (syntaxType == BaseType) {
 								value = repeated ? value + "Li" : value
-								import_type.add(value)
+								proto_import.add(value)
 								return value
 							} else if (syntaxType == "Identifier") {
 								const finded = find(type.resolvedValue)
@@ -70,7 +70,7 @@ const BaseType = "BaseType",
 										comment += " enum " + value
 										value = "int32"
 										if (repeated) value += "Li"
-										import_type.add(value)
+										proto_import.add(value)
 										return value
 									} else if (findedSyntaxType == "MessageDefinition") {
 										console.log({ type, finded })
@@ -94,17 +94,17 @@ const BaseType = "BaseType",
 						let args_type
 
 						if (map) {
-							import_type.add("map")
+							proto_import.add("map")
 							args_type = "map(" + getType(o.keyType) + "," + type + ")"
 						} else {
 							args_type = type
 						}
 						args[id - 1] = "/* " + comment + " */ " + args_type
 					})
-					if (import_type.size) {
-						import_type = ", " + Array.from(import_type).toSorted().join(", ")
+					if (proto_import.size) {
+						proto_import = ", " + Array.from(proto_import).toSorted().join(", ")
 					} else {
-						import_type = ""
+						proto_import = ""
 					}
 
 					if (args.length) {
@@ -116,7 +116,7 @@ const BaseType = "BaseType",
 					;[..."ED"].forEach((kind) => {
 						push([
 							prefix_name + kind,
-							`import { $${import_type} } from "@i18n.site/proto/${kind}.js"
+							`import { $${proto_import} } from "@i18n.site/proto/${kind}.js"
 
 export default $([${args}])`,
 						])
