@@ -53,16 +53,19 @@ const BaseType = "BaseType",
 						js_import = new Set(),
 						args = [],
 						comment,
-						liType = (type) => {
-							if (["string", "bytes"].includes(type)) {
-								return "[" + type + "]"
-							}
-							return type + "Li"
-						},
 						getType = (type, repeated) => {
+							const typeStr = (type) => {
+								if (["string", "bytes"].includes(type)) {
+									proto_import.add(type)
+									return "[" + type + "]"
+								}
+								type = type + "Li"
+								proto_import.add(type)
+								return type
+							}
 							let { value, syntaxType } = type
 							if (syntaxType == BaseType) {
-								value = repeated ? liType(value) : value
+								value = repeated ? typeStr(value) : value
 								proto_import.add(value)
 								return value
 							} else if (syntaxType == "Identifier") {
