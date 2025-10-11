@@ -17,7 +17,7 @@ const bundle = async (filepath) => {
 
 		mkdirSync(dirname(out_path), { recursive: true })
 
-		copyFileSync(filepath, out_path)
+		copyFileSync(join(ROOT, filepath), out_path)
 
 		const code = await treeShaking(out_path, [
 			"$",
