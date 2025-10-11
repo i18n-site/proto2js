@@ -76,10 +76,7 @@ const BaseType = "BaseType",
 								if (finded) {
 									const findedSyntaxType = finded[1].syntaxType
 									if (findedSyntaxType == "EnumDefinition") {
-										if (!comment.includes(":")) {
-											comment += " :"
-										}
-										comment += " enum " + value
+										comment += ": enum " + value
 										value = "int32"
 										if (repeated) value += "Li"
 										proto_import.add(value)
@@ -96,10 +93,6 @@ const BaseType = "BaseType",
 					Object.values(fields).forEach((o) => {
 						const { id, name, map, repeated } = o
 						comment = id + " " + name
-
-						if (repeated) {
-							comment += " : repeated"
-						}
 
 						const type = getType(o.type, repeated)
 
