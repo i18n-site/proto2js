@@ -38,14 +38,11 @@ const BaseType = "BaseType",
 								syntaxType == "Identifier" &&
 								type.resolvedValue.startsWith(pkg_prefix)
 							) {
-								const vSyntaxType = root_nested[value]
-								console.log({ vSyntaxType, value })
-								// console.log(vSyntaxType)
-								//
-								// if (vSyntaxType == "EnumDefinition") {
-								// 	value = "int32"
-								// 	return value
-								// }
+								const vSyntaxType = root_nested[value].syntaxType
+								if (vSyntaxType == "EnumDefinition") {
+									value = "int32"
+									return value
+								}
 							}
 							console.log("TODO type", type, { pkg_prefix })
 						}
