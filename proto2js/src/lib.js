@@ -14,7 +14,7 @@ const BaseType = "BaseType",
 			type = type.nested[type_name.shift()]
 		}
 	},
-	gen = (find, pkg_prefix, root_nested, prefix) => {
+	gen = (find, root_nested, prefix) => {
 		const pathCode = []
 		if (!root_nested) return pathCode
 
@@ -129,6 +129,5 @@ export default (proto) => {
 		pkg_prefix += pkg + "."
 	}
 
-	const args = [pkg_prefix, nested]
-	return gen(findType(...args), ...args)
+	return gen(findType(pkg_prefix, nested), nested)
 }
