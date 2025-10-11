@@ -39,6 +39,7 @@ const BaseType = "BaseType",
 								syntaxType == "Identifier" &&
 								type.resolvedValue.startsWith(pkg_prefix)
 							) {
+								console.log(type)
 								const vSyntaxType = root_nested[value].syntaxType
 								if (vSyntaxType == "EnumDefinition") {
 									if (!comment.includes(":")) {
