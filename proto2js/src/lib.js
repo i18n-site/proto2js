@@ -154,8 +154,6 @@ export default (proto) => {
 		} = parsed,
 		pkg_prefix = "."
 
-	console.log(nested)
-
 	if (pkg) {
 		nested = Object.values(nested)[0].nested
 		pkg_prefix += pkg + "."
