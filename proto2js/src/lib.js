@@ -74,7 +74,8 @@ const BaseType = "BaseType",
 										return value
 									} else if (findedSyntaxType == "MessageDefinition") {
 										console.log({ type, finded })
-										return
+										const name = finded[0].join("$")
+										return name
 									}
 								}
 							}
