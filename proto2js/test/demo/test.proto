@@ -2,10 +2,16 @@ syntax = "proto3";
 
 package demo;
 
+enum Kind {
+  UNDEFINED = 0;
+  IMAGE = 1;
+  VIDEO = 2;
+}
+
 message Test1 {
   map<string, int32> kv = 1;
-  repeated uint64 id = 3;
-  string name = 4;
+  repeated Kind id = 3;
+  Kind name = 4;
 }
 
 // message SearchResponse {
@@ -17,11 +23,6 @@ message Test1 {
 //   repeated Result results = 1;
 // }
 //
-// enum Kind {
-//   UNDEFINED = 0;
-//   IMAGE = 1;
-//   VIDEO = 2;
-// }
 
 //
 //
