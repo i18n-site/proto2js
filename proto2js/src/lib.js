@@ -3,7 +3,10 @@
 import { parse } from "proto-parser"
 
 const BaseType = "BaseType",
-	gen = (pkg_prefix, root_nested, prefix) => {
+	findType = (pkg, root_nested) => (type_name) => {
+		console.log({ pkg, type_name })
+	},
+	gen = (find, pkg_prefix, root_nested, prefix) => {
 		const pathCode = []
 		if (!root_nested) return pathCode
 
@@ -35,22 +38,20 @@ const BaseType = "BaseType",
 								value = repeated ? value + "Li" : value
 								import_type.add(value)
 								return value
-							} else if (
-								syntaxType == "Identifier" &&
-								type.resolvedValue.startsWith(pkg_prefix)
-							) {
+							} else if (syntaxType == "Identifier") {
 								console.log(type)
-								const vSyntaxType = root_nested[value].syntaxType
-								if (vSyntaxType == "EnumDefinition") {
-									if (!comment.includes(":")) {
-										comment += " :"
-									}
-									comment += " enum " + value
-									value = "int32"
-									if (repeated) value += "Li"
-									import_type.add(value)
-									return value
-								}
+								// const finded = find(resolvedValue)
+								// const vSyntaxType = root_nested[value].syntaxType
+								// if (vSyntaxType == "EnumDefinition") {
+								// 	if (!comment.includes(":")) {
+								// 		comment += " :"
+								// 	}
+								// 	comment += " enum " + value
+								// 	value = "int32"
+								// 	if (repeated) value += "Li"
+								// 	import_type.add(value)
+								// 	return value
+								// }
 							}
 							console.log("TODO type", type, { pkg_prefix })
 						}
@@ -96,7 +97,7 @@ export default $([${args}])`,
 					})
 
 					if (nested) {
-						push(...gen(pkg_prefix, nested, prefix_name))
+						push(...gen(find, pkg_prefix, nested, prefix_name))
 					}
 			}
 		}
@@ -117,5 +118,7 @@ export default (proto) => {
 		nested = Object.values(nested)[0].nested
 		pkg_prefix += pkg + "."
 	}
-	return gen(pkg_prefix, nested)
+
+	const args = [pkg_prefix, nested]
+	return gen(findType(...args), ...args)
 }
