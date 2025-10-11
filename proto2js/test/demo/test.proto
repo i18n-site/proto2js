@@ -2,16 +2,16 @@ syntax = "proto3";
 
 package demo;
 
-// enum Kind {
-//   UNDEFINED = 0;
-//   IMAGE = 1;
-//   VIDEO = 2;
-// }
-//
-// message Test1 {
-//   repeated Kind name_li = 1;
-//   Kind name = 4;
-// }
+enum Kind {
+  UNDEFINED = 0;
+  IMAGE = 1;
+  VIDEO = 2;
+}
+
+message Test1 {
+  repeated Kind name_li = 1;
+  Kind name = 4;
+}
 
 message Test0 {
   int64 abc = 1;
