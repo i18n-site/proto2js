@@ -144,6 +144,7 @@ export default $([${args}])`,
 
 export default (proto) => {
 	const parsed = parse(proto)
+	console.log(parsed)
 	if (parsed.error) {
 		throw new Error("line " + parsed.line + ": " + parsed.message)
 	}

@@ -24,8 +24,8 @@ const dirGen = async (proto_dir, out_dir) => {
 			try {
 				r = gen(code)
 			} catch (e) {
-				console.error(e)
-				throw new Error(fp)
+				console.error("❌ " + fp)
+				throw e
 			}
 			r.forEach(([k, v]) => {
 				write(join(out_prefix, k + ".js"), v)
