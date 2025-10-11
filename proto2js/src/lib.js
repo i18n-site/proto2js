@@ -26,7 +26,7 @@ const BaseType = "BaseType",
 		}
 		return [type_name, type]
 	},
-	gen = (find, root_nested, prefix) => {
+	gen = (find, root_nested, prefix_li) => {
 		const pathCode = []
 		if (!root_nested) return pathCode
 
@@ -34,7 +34,7 @@ const BaseType = "BaseType",
 
 		for (const val of Object.values(root_nested)) {
 			let { name, syntaxType } = val
-			let prefix_name = prefix.concat([name]).join("/")
+			let prefix_name = prefix_li.concat([name]).join("/")
 			console.log("- " + prefix_name)
 			switch (syntaxType) {
 				case "EnumDefinition": {
@@ -115,19 +115,22 @@ const BaseType = "BaseType",
 					}
 
 					js_import = [...js_import].toSorted()
+					const rel = prefix_li.length
+						? prefix_li.map(() => "..").join("/")
+						: "."
 
 					;["E", "D"].forEach((kind) => {
 						push([
 							prefix_name + kind,
 							`import { $${proto_import} } from "@i18n.site/proto/${kind}.js"
-${js_import.map((i) => "import " + i + ' from "./' + i.replaceAll("$", "/") + kind + '.js"').join("\n")}
+${js_import.map((i) => "import " + i + ' from "' + rel + "/" + i.replaceAll("$", "/") + kind + '.js"').join("\n")}
 
 export default $([${args}])`,
 						])
 					})
 
 					if (nested) {
-						push(...gen(find, nested, prefix.concat([name])))
+						push(...gen(find, nested, prefix_li.concat([name])))
 					}
 			}
 		}
