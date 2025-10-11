@@ -19,7 +19,12 @@ message Test0 {
 
 message SearchResponse {
   message Result {
-    Test0 url = 1;
+    message Result2 {
+      Test0 url = 1;
+      // string title = 2;
+      // repeated string snippets = 3;
+    }
+    Result2 url = 1;
     // string title = 2;
     // repeated string snippets = 3;
   }
