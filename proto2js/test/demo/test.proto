@@ -2,24 +2,24 @@ syntax = "proto3";
 
 package demo;
 
-// enum Kind {
-//   UNDEFINED = 0;
-//   IMAGE = 1;
-//   VIDEO = 2;
-// }
-//
-// message Test1 {
-//   Kind name = 4;
-// }
-
-message SearchResponse {
-  message Result {
-    string url = 1;
-    // string title = 2;
-    // repeated string snippets = 3;
-  }
-  repeated Result r = 1;
+enum Kind {
+  UNDEFINED = 0;
+  IMAGE = 1;
+  VIDEO = 2;
 }
+
+message Test1 {
+  Kind name = 4;
+}
+
+// message SearchResponse {
+//   message Result {
+//     string url = 1;
+//     // string title = 2;
+//     // repeated string snippets = 3;
+//   }
+//   repeated Result r = 1;
+// }
 
 //
 //

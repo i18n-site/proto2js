@@ -8,10 +8,10 @@ const BaseType = "BaseType",
 		type_name = type_name.slice(pkg.length).split(".")
 		let type = root_nested[type_name.shift()]
 		while (type) {
-			type = type.nested[type_name.shift()]
 			if (!type_name.length) {
 				return type
 			}
+			type = type.nested[type_name.shift()]
 		}
 	},
 	gen = (find, pkg_prefix, root_nested, prefix) => {
