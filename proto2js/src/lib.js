@@ -60,6 +60,9 @@ const BaseType = "BaseType",
 										if (repeated) value += "Li"
 										import_type.add(value)
 										return value
+									} else {
+										console.log({ type, findedSyntaxType })
+										return
 									}
 								}
 							}
