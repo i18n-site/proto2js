@@ -53,7 +53,7 @@ const BaseType = "BaseType",
 						comment = id + " " + name
 
 						if (repeated) {
-							comment += " repeated"
+							comment += " : repeated"
 						}
 
 						const type = getType(o.type, repeated)
