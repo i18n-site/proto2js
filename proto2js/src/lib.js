@@ -3,6 +3,8 @@
 import { parse } from "proto-parser"
 
 const BaseType = "BaseType",
+	liType = (type) =>
+		["string", "bytes"].includes(type) ? "[" + type + "]" : type + "Li",
 	findType = (pkg, root_nested) => (type_name) => {
 		if (!type_name.startsWith(pkg)) {
 			return
@@ -56,7 +58,7 @@ const BaseType = "BaseType",
 						getType = (type, repeated) => {
 							let { value, syntaxType } = type
 							if (syntaxType == BaseType) {
-								value = repeated ? value + "Li" : value
+								value = repeated ? liType(value) : value
 								proto_import.add(value)
 								return value
 							} else if (syntaxType == "Identifier") {
