@@ -41,6 +41,7 @@ const BaseType = "BaseType",
 							) {
 								const vSyntaxType = root_nested[value].syntaxType
 								if (vSyntaxType == "EnumDefinition") {
+									comment += " enum " + value
 									value = "int32"
 									return value
 								}
@@ -48,9 +49,9 @@ const BaseType = "BaseType",
 							console.log("TODO type", type, { pkg_prefix })
 						}
 					Object.values(fields).forEach((o) => {
+						const { id, name, map, repeated } = o
 						comment = id + " " + name
-						const { id, name, map, repeated } = o,
-							type = getType(o.type, repeated)
+						const type = getType(o.type, repeated)
 
 						let args_type
 
