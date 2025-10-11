@@ -46,6 +46,8 @@ const BaseType = "BaseType",
 									}
 									comment += " enum " + value
 									value = "int32"
+									if (repeated) value += "Li"
+									import_type.add(value)
 									return value
 								}
 							}
