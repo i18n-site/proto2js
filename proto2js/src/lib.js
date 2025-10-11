@@ -22,7 +22,7 @@ const BaseType = "BaseType",
 
 		for (const val of Object.values(root_nested)) {
 			let { name, syntaxType } = val
-			let prefix_name = prefix ? prefix + "/" + name : name
+			let prefix_name = prefix.concat([name]).join("/")
 			console.log("- " + prefix_name)
 			switch (syntaxType) {
 				case "EnumDefinition": {
@@ -107,7 +107,7 @@ export default $([${args}])`,
 					})
 
 					if (nested) {
-						push(...gen(find, pkg_prefix, nested, prefix_name))
+						push(...gen(find, nested, prefix.concat([name])))
 					}
 			}
 		}
@@ -129,5 +129,5 @@ export default (proto) => {
 		pkg_prefix += pkg + "."
 	}
 
-	return gen(findType(pkg_prefix, nested), nested)
+	return gen(findType(pkg_prefix, nested), nested, [])
 }
