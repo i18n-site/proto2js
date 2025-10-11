@@ -120,6 +120,7 @@ const BaseType = "BaseType",
 						push([
 							prefix_name + kind,
 							`import { $${proto_import} } from "@i18n.site/proto/${kind}.js"
+${js_import.map((i) => "import " + i + ' from "' + i.replaceAll("$", "/") + '.js"').join("\n")}
 
 export default $([${args}])`,
 						])
