@@ -24,7 +24,7 @@ const BaseType = "BaseType",
 			if (!type) return
 			++n
 		}
-		return type
+		return [type_name, type]
 	},
 	gen = (find, root_nested, prefix) => {
 		const pathCode = []
@@ -62,7 +62,7 @@ const BaseType = "BaseType",
 								const finded = find(type.resolvedValue)
 								// console.log({ finded })
 								if (finded) {
-									const findedSyntaxType = finded.syntaxType
+									const findedSyntaxType = finded[1].syntaxType
 									if (findedSyntaxType == "EnumDefinition") {
 										if (!comment.includes(":")) {
 											comment += " :"
@@ -73,7 +73,7 @@ const BaseType = "BaseType",
 										import_type.add(value)
 										return value
 									} else if (findedSyntaxType == "MessageDefinition") {
-										console.log({ type, findedSyntaxType })
+										console.log({ type, finded })
 										return
 									}
 								}
