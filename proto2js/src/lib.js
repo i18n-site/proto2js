@@ -130,7 +130,6 @@ const BaseType = "BaseType",
 							prefix_name + kind,
 							`import { $${proto_import} } from "@i18n.site/proto/${kind}.js"
 ${js_import.map((i) => "import " + i + ' from "' + rel + "/" + i.replaceAll("$", "/") + kind + '.js"').join("\n")}
-
 export default $([${args}])`,
 						])
 					})
