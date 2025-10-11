@@ -3,13 +3,13 @@
 import { parse } from "proto-parser"
 
 const BaseType = "BaseType",
-	gen = (pkg_prefix, nested, prefix) => {
+	gen = (pkg_prefix, root_nested, prefix) => {
 		const pathCode = []
-		if (!nested) return pathCode
+		if (!root_nested) return pathCode
 
 		const push = pathCode.push.bind(pathCode)
 
-		for (const val of Object.values(nested)) {
+		for (const val of Object.values(root_nested)) {
 			let { name, syntaxType } = val
 			let prefix_name = prefix ? prefix + "/" + name : name
 			console.log("- " + prefix_name)
@@ -36,8 +36,14 @@ const BaseType = "BaseType",
 								return value
 							} else if (
 								syntaxType == "Identifier" &&
-								resolvedValue.startsWith(pkg_prefix)
+								type.resolvedValue.startsWith(pkg_prefix)
 							) {
+								const vSyntaxType = root_nested[value].syntaxType
+
+								if (vSyntaxType == "EnumDefinition") {
+									value = "int32"
+									return value
+								}
 							}
 							console.log("TODO type", type, { pkg_prefix })
 						}
