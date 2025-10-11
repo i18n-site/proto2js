@@ -35,7 +35,7 @@ const BaseType = "BaseType",
 								import_type.add(value)
 								return value
 							}
-							console.log("TODO type", type)
+							console.log("TODO type", type, pkg_prefix)
 						}
 					Object.values(fields).forEach((o) => {
 						const { id, name, map, repeated } = o,
