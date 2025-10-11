@@ -48,8 +48,9 @@ const BaseType = "BaseType",
 								return value
 							} else if (syntaxType == "Identifier") {
 								const finded = find(type.resolvedValue)
+								console.log({ finded })
 								if (finded) {
-									const findedSyntaxType = finded.SyntaxType
+									const findedSyntaxType = finded.syntaxType
 									if (findedSyntaxType == "EnumDefinition") {
 										if (!comment.includes(":")) {
 											comment += " :"
