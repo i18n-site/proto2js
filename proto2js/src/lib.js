@@ -41,6 +41,9 @@ const BaseType = "BaseType",
 							) {
 								const vSyntaxType = root_nested[value].syntaxType
 								if (vSyntaxType == "EnumDefinition") {
+									if (!comment.includes(":")) {
+										comment += " :"
+									}
 									comment += " enum " + value
 									value = "int32"
 									return value
