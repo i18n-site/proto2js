@@ -34,8 +34,12 @@ const BaseType = "BaseType",
 							if (syntaxType == BaseType) {
 								import_type.add(value)
 								return value
+							} else if (
+								syntaxType == "Identifier" &&
+								resolvedValue.startsWith(pkg_prefix)
+							) {
 							}
-							console.log("TODO type", type, pkg_prefix)
+							console.log("TODO type", type, { pkg_prefix })
 						}
 					Object.values(fields).forEach((o) => {
 						const { id, name, map, repeated } = o,
