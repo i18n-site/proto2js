@@ -48,7 +48,7 @@ const BaseType = "BaseType",
 								return value
 							} else if (syntaxType == "Identifier") {
 								const finded = find(type.resolvedValue)
-								console.log({ finded })
+								// console.log({ finded })
 								if (finded) {
 									const findedSyntaxType = finded.syntaxType
 									if (findedSyntaxType == "EnumDefinition") {
@@ -63,7 +63,7 @@ const BaseType = "BaseType",
 									}
 								}
 							}
-							console.log("TODO type", type, { pkg_prefix })
+							console.log("TODO : getType", type)
 						}
 					Object.values(fields).forEach((o) => {
 						const { id, name, map, repeated } = o
