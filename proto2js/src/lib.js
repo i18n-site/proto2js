@@ -4,8 +4,11 @@ import { parse } from "proto-parser"
 
 const BaseType = "BaseType",
 	findType = (pkg, root_nested) => (type_name) => {
-		if (!type_name.startsWith(pkg)) return
-		type_name = type_name.slice(pkg.length).split(".")
+		if (!type_name.startsWith(pkg)) {return}
+
+		type_name = type_name.slice(pkg.length).split("."),
+    const type_name_len = type_name.length
+    if (!type_name_len ) {return}
 
 		let n = 0,
 			type = root_nested
