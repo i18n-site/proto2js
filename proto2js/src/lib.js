@@ -114,7 +114,9 @@ const BaseType = "BaseType",
 						args = ""
 					}
 
-					;[..."ED"].forEach((kind) => {
+					js_import = [...js_import].toSorted()
+
+					;["E", "D"].forEach((kind) => {
 						push([
 							prefix_name + kind,
 							`import { $${proto_import} } from "@i18n.site/proto/${kind}.js"
