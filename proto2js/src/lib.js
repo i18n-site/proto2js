@@ -28,6 +28,7 @@ const BaseType = "BaseType",
 					const { fields, nested } = val
 					let import_type = new Set(),
 						args = [],
+						comment,
 						getType = (type, repeated) => {
 							let { value, syntaxType } = type
 							if (syntaxType == BaseType) {
@@ -47,6 +48,7 @@ const BaseType = "BaseType",
 							console.log("TODO type", type, { pkg_prefix })
 						}
 					Object.values(fields).forEach((o) => {
+						comment = id + " " + name
 						const { id, name, map, repeated } = o,
 							type = getType(o.type, repeated)
 
@@ -58,7 +60,7 @@ const BaseType = "BaseType",
 						} else {
 							args_type = type
 						}
-						args[id - 1] = "/* " + id + " " + name + " */ " + args_type
+						args[id - 1] = "/* " + comment + " */ " + args_type
 					})
 					if (import_type.size) {
 						import_type = ", " + Array.from(import_type).toSorted().join(", ")
