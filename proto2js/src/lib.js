@@ -48,17 +48,19 @@ const BaseType = "BaseType",
 								return value
 							} else if (syntaxType == "Identifier") {
 								const finded = find(type.resolvedValue)
-								// const vSyntaxType = root_nested[value].syntaxType
-								// if (vSyntaxType == "EnumDefinition") {
-								// 	if (!comment.includes(":")) {
-								// 		comment += " :"
-								// 	}
-								// 	comment += " enum " + value
-								// 	value = "int32"
-								// 	if (repeated) value += "Li"
-								// 	import_type.add(value)
-								// 	return value
-								// }
+								if (finded) {
+									const findedSyntaxType = finded.SyntaxType
+									if (findedSyntaxType == "EnumDefinition") {
+										if (!comment.includes(":")) {
+											comment += " :"
+										}
+										comment += " enum " + value
+										value = "int32"
+										if (repeated) value += "Li"
+										import_type.add(value)
+										return value
+									}
+								}
 							}
 							console.log("TODO type", type, { pkg_prefix })
 						}
