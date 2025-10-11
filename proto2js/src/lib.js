@@ -75,7 +75,7 @@ const BaseType = "BaseType",
 									} else if (findedSyntaxType == "MessageDefinition") {
 										console.log({ type, finded })
 										const name = finded[0].join("$")
-										return name
+										return repeated ? "[" + name + "]" : name
 									}
 								}
 							}
